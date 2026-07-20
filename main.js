@@ -28,7 +28,7 @@ revealElements.forEach(el => {
     revealOnScroll.observe(el);
 });
 
-// Floating Line Popup B-2 Scroll Trigger & Dismiss
+// Floating Line Popup B-2 Scroll Trigger (Exact 50%+ scroll) & Dismiss
 document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById('linePopup');
     const closeBtn = document.getElementById('closePopupBtn');
@@ -49,9 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isClosed || !popup) return;
 
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+        const docHeight = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight
+        );
 
-        // 300px以上スクロールしたら最前面ポップアップ表示
-        if (scrollTop >= 300) {
+        const scrollableDistance = docHeight - windowHeight;
+        if (scrollableDistance <= 0) return;
+
+        // ページの全高の半分（50%以上）スクロールされた場合のみ表示
+        const scrollPercentage = (scrollTop / scrollableDistance) * 100;
+
+        if (scrollPercentage >= 50) {
             popup.classList.add('visible');
         } else {
             popup.classList.remove('visible');
@@ -59,5 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('scroll', checkScroll, { passive: true });
+    window.addEventListener('resize', checkScroll, { passive: true });
     checkScroll();
 });
