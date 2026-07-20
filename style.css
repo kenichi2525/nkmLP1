@@ -318,14 +318,6 @@ header.scrolled {
   border-color: rgba(255, 255, 255, 0.8);
 }
 
-.glass-card-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--soft-red);
-  border-radius: 50%;
-  margin-bottom: 20px;
-}
-
 .glass-card-text {
   font-size: 0.95rem;
   font-weight: 500;
@@ -337,10 +329,6 @@ header.scrolled {
   background: rgba(232, 211, 195, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.6);
   padding: 40px 30px;
-}
-
-.glass-card-final .glass-card-dot {
-  display: none;
 }
 
 .glass-card-final .glass-card-text {
