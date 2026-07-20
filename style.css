@@ -676,29 +676,35 @@ footer {
   bottom: 24px;
   right: 24px;
   width: 260px;
-  background: rgba(255, 255, 255, 0.95);
+  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 16px;
   box-sizing: border-box;
-  z-index: 9999;
+  z-index: 999999;
   opacity: 0;
-  transform: translateY(30px) scale(0.95);
+  visibility: hidden;
+  transform: translateY(30px);
   pointer-events: none;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
 }
 
 .popup-b2.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  visibility: visible;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
 .popup-b2.closed {
   display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .b2-top {
@@ -717,8 +723,8 @@ footer {
 .popup-b2 .close-btn {
   background: none;
   border: none;
-  font-size: 0.9rem;
-  color: #aaa;
+  font-size: 1rem;
+  color: #888;
   cursor: pointer;
   padding: 2px 6px;
   transition: 0.2s;
@@ -752,10 +758,12 @@ footer {
 
 @media (max-width: 768px) {
   .popup-b2 {
-    bottom: 15px;
+    bottom: 20px;
     right: 15px;
     left: 15px;
     width: auto;
+    max-width: 340px;
+    margin: 0 auto;
   }
 }
 
