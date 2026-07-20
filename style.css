@@ -670,7 +670,7 @@ footer {
   }
 }
 
-/* Popup B-2: Compact Floating Card */
+/* Floating LINE Popup B-2 (Compact Floating Card) */
 .popup-b2 {
   position: fixed;
   bottom: 24px;
@@ -681,30 +681,32 @@ footer {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(6, 199, 85, 0.2);
   padding: 16px;
   box-sizing: border-box;
-  z-index: 999999;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(30px);
-  pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+  z-index: 9999999;
+  display: none; /* 初期状態は完全隠蔽 */
 }
 
 .popup-b2.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
+  display: block !important;
+  animation: popupSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .popup-b2.closed {
   display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+}
+
+@keyframes popupSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .b2-top {
@@ -723,10 +725,11 @@ footer {
 .popup-b2 .close-btn {
   background: none;
   border: none;
-  font-size: 1rem;
-  color: #888;
+  font-size: 1.1rem;
+  color: #999;
   cursor: pointer;
   padding: 2px 6px;
+  line-height: 1;
   transition: 0.2s;
 }
 
@@ -745,9 +748,9 @@ footer {
   text-decoration: none;
   font-weight: bold;
   font-size: 0.95rem;
-  padding: 10px 0;
+  padding: 11px 0;
   border-radius: 25px;
-  box-shadow: 0 4px 12px rgba(6, 199, 85, 0.3);
+  box-shadow: 0 4px 14px rgba(6, 199, 85, 0.35);
   transition: 0.3s;
 }
 
@@ -759,11 +762,11 @@ footer {
 @media (max-width: 768px) {
   .popup-b2 {
     bottom: 20px;
-    right: 15px;
     left: 15px;
-    width: auto;
-    max-width: 340px;
+    right: 15px;
     margin: 0 auto;
+    width: calc(100% - 30px);
+    max-width: 340px;
   }
 }
 
