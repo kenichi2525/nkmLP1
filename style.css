@@ -230,32 +230,101 @@ header.scrolled {
   animation: none;
 }
 
-/* Pain/Concern Section */
+/* Pain/Concern Section — Glassmorphism */
 .pain-section {
-  background-color: #F0EDE9;
+  background: linear-gradient(135deg, #EDE8E2 0%, #F5F0EA 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative floating blobs */
+.pain-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pain-blob-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(193, 138, 93, 0.25);
+  top: 5%;
+  left: 5%;
+  animation: painBlobFloat 15s infinite ease-in-out alternate;
+}
+
+.pain-blob-2 {
+  width: 500px;
+  height: 500px;
+  background: rgba(210, 154, 154, 0.25);
+  bottom: 5%;
+  right: 5%;
+  animation: painBlobFloat 15s infinite ease-in-out alternate;
+  animation-delay: -7.5s;
+}
+
+.pain-blob-3 {
+  width: 300px;
+  height: 300px;
+  background: rgba(232, 211, 195, 0.35);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(60px);
+  animation: painBlobCenter 20s infinite ease-in-out alternate;
+}
+
+@keyframes painBlobFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -50px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+@keyframes painBlobCenter {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-40%, -60%) scale(1.2); }
+  100% { transform: translate(-60%, -40%) scale(0.8); }
+}
+
+.pain-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 .pain-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px; /* Compact gap */
+  gap: 25px;
   margin-top: 30px;
-  max-width: 900px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.pain-item {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 35px 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
-.pain-dot {
+.glass-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(193, 138, 93, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.glass-card-dot {
   width: 8px;
   height: 8px;
   background-color: var(--soft-red);
@@ -263,10 +332,31 @@ header.scrolled {
   margin-bottom: 20px;
 }
 
-.pain-text {
-  font-size: 0.9rem; /* Compact font */
+.glass-card-text {
+  font-size: 0.95rem;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+.glass-card-final {
+  grid-column: 1 / -1;
+  background: rgba(232, 211, 195, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 40px 30px;
+}
+
+.glass-card-final .glass-card-dot {
+  display: none;
+}
+
+.glass-card-final .glass-card-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-accent);
+}
+
+.glass-card-final:hover {
+  box-shadow: 0 15px 40px rgba(210, 154, 154, 0.2);
 }
 
 /* Concept Section */
@@ -578,8 +668,8 @@ footer {
   .pain-list {
     grid-template-columns: 1fr;
   }
-  .pain-item {
-    padding: 20px;
+  .glass-card {
+    padding: 25px 20px;
   }
   .step-item {
     flex-direction: column;
