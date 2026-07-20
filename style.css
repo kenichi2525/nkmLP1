@@ -670,3 +670,92 @@ footer {
   }
 }
 
+/* Popup B-2: Compact Floating Card */
+.popup-b2 {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 260px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popup-b2.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.popup-b2.closed {
+  display: none !important;
+}
+
+.b2-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.b2-label {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+.popup-b2 .close-btn {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  color: #aaa;
+  cursor: pointer;
+  padding: 2px 6px;
+  transition: 0.2s;
+}
+
+.popup-b2 .close-btn:hover {
+  color: var(--text-dark);
+}
+
+.b2-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--line-green);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  padding: 10px 0;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(6, 199, 85, 0.3);
+  transition: 0.3s;
+}
+
+.b2-btn:hover {
+  background: #05b04a;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .popup-b2 {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+    width: auto;
+  }
+}
+
