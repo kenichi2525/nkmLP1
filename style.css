@@ -643,15 +643,26 @@ footer {
   .concept-visual img {
     width: 100% !important;
   }
-  .feature-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .pain-list {
-    grid-template-columns: 1fr;
+  .feature-card {
+    padding: 30px 20px;
   }
   .glass-card {
-    padding: 25px 20px;
+    padding: 22px 18px;
+  }
+  .glass-card-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .concept-text p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+  .cta-btn {
+    padding: 16px 28px;
+    font-size: 0.98rem;
+    max-width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
   .step-item {
     flex-direction: column;
