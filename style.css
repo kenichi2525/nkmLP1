@@ -643,6 +643,14 @@ footer {
   .concept-visual img {
     width: 100% !important;
   }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .pain-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
   .feature-card {
     padding: 30px 20px;
   }
