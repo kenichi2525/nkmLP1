@@ -20,4 +20,4 @@ jobs:
           password: ${{ secrets.LOLIPOP_FTP_PASSWORD }}
           server-dir: /top/lp/
           local-dir: ./
-          secure: false
+          protocol: ftp
